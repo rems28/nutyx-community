@@ -1,4 +1,4 @@
- # Depends on: 
+ # Depends on: dos2unix python2
 
 description="Google Drive GUI"
 packager="liberodark"
@@ -6,6 +6,7 @@ url="https://github.com/liberodark/ODrive"
 
 name=odrive
 version=0.2.0
+release=2
 
 source=(https://github.com/liberodark/ODrive/releases/download/${version}/odrive_${version}_amd64.deb)
 
