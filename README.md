@@ -1,5 +1,5 @@
 # nutyx-community
-Community collection for nutyx distribution
+Community collection for nutyx distribution.
 To enable the collection, please add to your /etc/cards.conf the following lines
 
 ```## For community
