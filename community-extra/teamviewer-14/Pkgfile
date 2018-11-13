@@ -1,0 +1,24 @@
+# Depends on: hicolor-icon-theme dbus qtbase qtdeclarative qtquickcontrols qtwebkit qtx11extras
+
+description="All-In-One Software for Remote Support and Online Meetings"
+packager="liberodark"
+url="https://www.teamviewer.com/"
+
+name=teamviewer-14
+version=14.0.8346
+
+source=(https://download.teamviewer.com/download/linux/version_14x/teamviewer_amd64.deb
+        teamviewerd.sysv)
+
+build() {
+
+ar x teamviewer_amd64.deb
+tar xvf data.tar.xz
+rm -r etc/apt
+cp -r etc $PKG
+install -vdm755 $PKG/etc/init.d
+install -vm755 teamviewerd.sysv $PKG/etc/init.d/teamviewerd
+cp -r opt $PKG
+cp -r usr $PKG
+cp -r var $PKG
+}
