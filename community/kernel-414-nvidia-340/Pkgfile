@@ -1,0 +1,43 @@
+makedepends=(kernel-414)
+
+description="Additionnals modules for Nvidia proprietary drivers"
+url="http://www.nvidia.com/"
+
+maintainer="rems"
+packager="Yaolinux Team"
+
+name=kernel-lts-nvidia-340
+version=340.107
+
+modfolder=lib/modules/4.14*/kernel/drivers/video
+
+source=(http://fr.download.nvidia.com/XFree86/Linux-x86_64/$version/NVIDIA-Linux-x86_64-$version.run
+        kernel-4.11.patch)
+
+prepare() {
+sh NVIDIA-Linux-x86_64-$version.run --extract-only
+}
+
+build()
+{
+cd NVIDIA-Linux-x86_64-$version
+patch -Np0 < "$SRC/kernel-4.11.patch"
+export IGNORE_CC_MISMATCH=1
+cd kernel
+make SYSSRC="/lib/modules/4.14*/build" module
+
+cd uvm
+make SYSSRC="/lib/modules/4.14*/build" module
+}
+
+package()
+{
+install -D -m644 "NVIDIA-Linux-x86_64-$version/kernel/nvidia.ko" \
+      "$PKG/$modfolder/nvidia.ko"
+install -D -m644 "NVIDIA-Linux-x86_64-$version/kernel/uvm/nvidia-uvm.ko" \
+      "$PKG/$modfolder/nvidia-uvm.ko"
+gzip $PKG$modfolder/*.ko
+
+echo "depmod -a $(basename /lib/modules/4.14*)" > \
+$PKGMK_ROOT/$name.post-install
+}
