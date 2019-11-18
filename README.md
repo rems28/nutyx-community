@@ -25,5 +25,5 @@ Save the file
 Install kernel-414, kernel-414-nvidia-340, nvidia 340 packages
 
 Make sure that kernel file is kernel-4.14.*-YaoLinuX-414 in /boot and be sure that is a file and not a symbolic link.
-Make sure the kernel-414 is created in /boot
+Make sure the kernel-414 is created in /boot and is a symbolic link to kernel-4.14.*-YaoLinuX-414 in /boot
  ```
