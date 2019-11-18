@@ -18,7 +18,8 @@ vi /boot/grub/grub.cfg or
 nano /boot/grub/grub.cfg if nano is installed
 
 Create a new menuentry with the new kernel 4.14.
-Replace the /boot/kernel-lts by /boot/kernel-414 in the linux line at the end of the file
+Replace the /boot/kernel-lts by /boot/kernel-414 in the linux line at the end of the menuentry
+
 Save the file
 
 Install kernel-414, kernel-414-nvidia-340, nvidia 340 packages
